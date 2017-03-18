@@ -1,10 +1,10 @@
 Spring MVC + Hibernate + Shiro Demo 
 
-Spring 4.3.3
-Hibernate 5.2.2
+Spring 4.3.3  
+Hibernate 5.2.2  
 Shiro 1.3.2
 
-JDK 1.8
+JDK 1.8  
 Gradle Project
 
 MySQL / MariaDB
@@ -14,9 +14,10 @@ MySQL / MariaDB
 >Github：https://sukaye.github.io/2017/03/19/springMvcDemo
 coding：http://suky.coding.me/2017/03/19/springMvcDemo
 ---
-Tables
+
+Tables  
 ![](doc/tables.png) 
 
-Table Data
+Table Data  
 ![](doc/tableData.png) 
 
