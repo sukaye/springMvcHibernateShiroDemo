@@ -1,0 +1,16 @@
+.gradle/
+gradlew
+gradle
+gradlew.bat
+
+.classpath
+.project
+
+build/
+classes/
+.svn/
+.gradle/
+bin/
+.settings/
+
+LICENSE

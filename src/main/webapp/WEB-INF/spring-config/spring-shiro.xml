@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/" />
+		<!-- <property name="successUrl" value="/index" />  -->
+		<property name="unauthorizedUrl" value="/error/unauthorized" /> 
+		<property name="filterChainDefinitions">
+			<value>
+				/ = anon	<!-- 任何人都可以访问，匿名 -->
+				/# = anon
+				/login/** = anon
+				/images/** = anon 
+				/scripts/** = anon 
+					
+				<!-- /demo/manage=roles[admin] --><!-- 改为在 PageController 中使用 @RequiresRoles注解 -->  	
+				<!-- 只有拥有 admin 角色的用户才能访问 -->
+
+				/** = authc		<!-- 需要登录验证 -->
+			</value>
+		</property>
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroRealm" />
+	</bean>
+
+	<bean id="shiroRealm" class="me.sk.shiro.ShiroRealm">
+		<property name="cacheManager" ref="shiroCacheManager" />
+	</bean>
+
+	<bean id="shiroCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<bean id="formAuthenticationFilter"
+		class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter" />
+		
+</beans>
