@@ -8,12 +8,7 @@ JDK 1.8
 Gradle Project
 
 MySQL / MariaDB
-
----
-简介
->Github：https://sukaye.github.io/2017/03/19/springMvcDemo  
-coding：http://suky.coding.me/2017/03/19/springMvcDemo  
-
+ 
 ---
 
 Tables  
